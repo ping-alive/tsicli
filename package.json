@@ -1,0 +1,33 @@
+{
+  "name": "tsicli",
+  "version": "1.0.0",
+  "description": "TypeScirpt Interactive CLI Builder",
+  "keywords": [
+    "typescript",
+    "cli",
+    "prompt"
+  ],
+  "main": "dist/index.js",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.3",
+  "devDependencies": {
+    "@types/node": "^18.7.15",
+    "@types/prompts": "^2.0.14",
+    "prettier": "^2.7.1",
+    "source-map-support": "^0.5.21",
+    "typescript": "^4.8.2"
+  },
+  "author": {
+    "name": "Minsang Kim",
+    "email": "minsangk@me.com",
+    "url": "https://twitter.com/minsangk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ping-alive/tsicli.git"
+  },
+  "dependencies": {
+    "chalk": "4",
+    "prompts": "^2.4.2"
+  }
+}

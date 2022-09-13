@@ -1,0 +1,23 @@
+# VSCode
+*.code-workspace
+
+# OSX
+.DS_Store
+**/.DS_Store
+
+# JS/TS
+node_modules
+**/tsconfig.tsbuildinfo
+dist/*
+
+# log
+logs/*
+
+# Yarn 2 zero-install
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
