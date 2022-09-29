@@ -94,10 +94,10 @@ export async function tsicli(
           return arg;
         }
       });
-      return runners[runnerName](...runnerArguments);
+      return await runners[runnerName](...runnerArguments);
     }
 
-    runners[runnerName]();
+    await runners[runnerName]();
   } else {
     const choices = matchings.map((matching) => ({
       title: matching.join(" "),
