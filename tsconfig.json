@@ -7,6 +7,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "lib": ["esnext", "dom"],
+    "declaration": true,
     // "typeRoots": ["./node_modules/@types", "./src/@types"],
 
     /* Strict Type-Checking Options */
