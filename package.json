@@ -1,6 +1,6 @@
 {
   "name": "tsicli",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "TypeScirpt Interactive CLI Builder",
   "keywords": [
     "typescript",
@@ -8,6 +8,7 @@
     "prompt"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
