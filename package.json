@@ -1,6 +1,6 @@
 {
   "name": "tsicli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TypeScirpt Interactive CLI Builder",
   "keywords": [
     "typescript",

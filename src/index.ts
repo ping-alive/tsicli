@@ -36,9 +36,10 @@ export async function tsicli(
     return;
   } else if (matchings.length === 1) {
     const matching = matchings[0];
-    const runnerName = matching
-      .filter((elem) => elem.startsWith("#") === false)
-      .join("_");
+    const filteredMatching = matching.filter(
+      (elem) => elem.startsWith("#") === false
+    );
+    const runnerName = filteredMatching.join("_");
     if (!runners[runnerName]) {
       throw new Error(`Needs to register the runner named "${runnerName}"`);
     }
@@ -97,7 +98,34 @@ export async function tsicli(
       return await runners[runnerName](...runnerArguments);
     }
 
-    await runners[runnerName]();
+    // 입력 argument 분리
+    const funcArguments = (() => {
+      if (filteredMatching.length === inputArgs.length) {
+        return [];
+      } else {
+        // 입력 argument type coercing
+        return inputArgs.slice(filteredMatching.length).map((value, index) => {
+          const typeName = matching[
+            filteredMatching.length + index
+          ] as `#${string}`;
+          const type = config.types[typeName];
+          if (!type) {
+            throw new Error(`Unknown type ${typeName}`);
+          }
+
+          if (type === "number") {
+            return Number(value);
+          } else if (type === "number[]") {
+            return value.split(",").map((v) => Number(v));
+          } else {
+            return value;
+          }
+        });
+      }
+    })();
+
+    // 실행
+    await runners[runnerName](...funcArguments);
   } else {
     const choices = matchings.map((matching) => ({
       title: matching.join(" "),
@@ -151,6 +179,9 @@ function checkBelongs(
         return true;
       } else if (type === "number" && !Number.isNaN(Number(argvElement))) {
         return true;
+      } else if (typeof type === "object") {
+        const values = type.choices!.map((c) => c.value);
+        return values.includes(argvElement);
       } else {
         throw new Error(`Unknown type ${configArg[index]}`);
       }
